@@ -13,6 +13,8 @@ def DeautAttack():
 #subprocess.call('airmon-ng check kill', shell=True)
 
 
+
+
 # receive a networkcard
     networkCard = raw_input('Please enter the name of the network card you wish to use: ')
     print('Now scanning for available networks, press ctrl+c to exit the scan')
