@@ -13,13 +13,17 @@ def DeautAttack():
 
 # run a shell command "airmon-ng"
     subprocess.call('airmon-ng', shell=True)
-#subprocess.call('airmon-ng start {}'.format(networkCard), shell=True)
-#subprocess.call('airmon-ng check kill', shell=True)
 
 # receive a networkcard
-    networkCard = raw_input('Please enter the name of the network card you wish to use: ')
+    networkCard1 = raw_input('Please enter the name of the network card you wish to change to monitor mode: ')
     print('Now scanning for available networks, press ctrl+c to exit the scan')
-
+    subprocess.call('airmon-ng start {}'.format(networkCard1), shell=True)
+    subprocess.call('airmon-ng check kill', shell=True)
+# run a shell command "airmon-ng"
+    subprocess.call('airmon-ng', shell=True)
+    networkCard= raw_input('Please enter the name of the network card you wish to use: ')
+    subprocess.call('airmon-ng start {}'.format(networkCard), shell=True)
+    print('Now scanning for available networks, press ctrl+c to exit the scan')
 # scaning the mac address in the network
     sniff(iface=networkCard, prn = Get_Wifi_AP.PacketHandler, timeout=10000000)
     #air = "bash -c \"sudo airodump-ng \"" + networkCard
